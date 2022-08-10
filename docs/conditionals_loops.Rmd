@@ -1,0 +1,93 @@
+---
+title: ''
+author: "Wade Sedgwick"
+date: '2022-08-10'
+output: html_document
+---
+
+```{r}
+
+library(tidyverse)
+
+```
+
+
+
+```{r}
+
+# Particulate matter
+
+pm2_5 <- 148
+
+if (pm2_5 < 100) {
+  print("Low to moderate risk")
+} else if (pm2_5 >= 100 & pm2_5 < 150) {
+  print("Unhealthy for sensitive groups")
+} else {
+  print("Health risk present")
+}
+
+# Blue Whales?
+
+species <- "blue_whale"
+
+if (species == "blue_whale") {
+  print("You found a Whale!")
+}
+
+# Air temp - too hot?
+
+max_airtemp_c <- 34.1
+
+if (max_airtemp_c > 27) {
+  print("Temperature too high")
+} else {
+  print("Temperature OK")
+}
+
+# BURRITOS
+
+base_burrito <- 6.50
+main_ingredient <- "steak"
+
+if (main_ingredient == "veggie") {
+  print(paste("The price is", base_burrito))
+} else if (main_ingredient == "chicken") {
+  print(paste("The price is ", base_burrito + 3))
+} else if (main_ingredient == "steak") {
+  print(paste("The price is", base_burrito + 3.25))
+}
+
+```
+
+### For Loops
+
+```{r}
+
+# Task 5
+
+fish <- c(8, 10, 12, 13)
+
+for(i in seq_along(fish)) {
+  prop_fish <- fish / sum(fish) * 100
+}
+prop_fish
+
+# Task 6
+
+
+
+for(i in seq_along(month.name)) {
+  print(paste(month.name[i], "is month", i))
+}
+
+
+```
+
+Create a new vector called fish that contains the values 8, 10, 12, 23 representing counts of different fish types in a fish tank (goldfish, tetras, guppies, and mollies, respectively). Write a for loop that iterates through fish, and returns what proportion of total fish in the tank are that species. Assume that these counts represent all fish in the tank.
+
+
+
+
+
+
