@@ -395,6 +395,8 @@ inlet_biochem &lt;- toolik_biochem %&gt;%
   filter(site == &quot;Toolik Inlet&quot;) %&gt;%
   select(p_h, doc_u_m, tdn_u_m)
 
+# Using across
+
 inlet_biochem %&gt;%
  mutate(across(.cols = everything(), mean, na.rm = TRUE))</code></pre>
 <pre><code>## # A tibble: 26 x 3
@@ -419,13 +421,15 @@ mean_tdn &lt;- mean(inlet_biochem$tdn_u_m)
 apply(inlet_biochem, 2, mean, na.rm = TRUE)</code></pre>
 <pre><code>##        p_h    doc_u_m    tdn_u_m 
 ##   7.063182 409.961538  13.365385</code></pre>
-<pre class="r"><code>my_vector &lt;- vector(mode = &quot;numeric&quot;, length = length(ncol(inlet_biochem)))
+<pre class="r"><code># For loop
+
+my_vector &lt;- vector(mode = &quot;numeric&quot;, length = length(ncol(inlet_biochem)))
 
 for (i in seq_along(inlet_biochem)) {
-  mean &lt;- mean(inlet_biochem[[i]])
+  mean &lt;- mean(inlet_biochem[[i]], na.rm = TRUE)
   print(mean)
 }</code></pre>
-<pre><code>## [1] NA
+<pre><code>## [1] 7.063182
 ## [1] 409.9615
 ## [1] 13.36538</code></pre>
 <pre class="r"><code>class(toolik_biochem$p_h)</code></pre>

@@ -24,6 +24,8 @@ inlet_biochem <- toolik_biochem %>%
   filter(site == "Toolik Inlet") %>%
   select(p_h, doc_u_m, tdn_u_m)
 
+# Using across
+
 inlet_biochem %>%
  mutate(across(.cols = everything(), mean, na.rm = TRUE))
 
@@ -33,10 +35,12 @@ mean_tdn <- mean(inlet_biochem$tdn_u_m)
 
 apply(inlet_biochem, 2, mean, na.rm = TRUE)
 
+# For loop
+
 my_vector <- vector(mode = "numeric", length = length(ncol(inlet_biochem)))
 
 for (i in seq_along(inlet_biochem)) {
-  mean <- mean(inlet_biochem[[i]])
+  mean <- mean(inlet_biochem[[i]], na.rm = TRUE)
   print(mean)
 }
 
