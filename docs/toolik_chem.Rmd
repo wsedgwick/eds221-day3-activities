@@ -36,7 +36,7 @@ apply(inlet_biochem, 2, mean, na.rm = TRUE)
 my_vector <- vector(mode = "numeric", length = length(ncol(inlet_biochem)))
 
 for (i in seq_along(inlet_biochem)) {
-  mean <- mean(inlet_biochem[i])
+  mean <- mean(inlet_biochem[[i]])
   print(mean)
 }
 

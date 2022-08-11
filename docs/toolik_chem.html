@@ -422,18 +422,12 @@ apply(inlet_biochem, 2, mean, na.rm = TRUE)</code></pre>
 <pre class="r"><code>my_vector &lt;- vector(mode = &quot;numeric&quot;, length = length(ncol(inlet_biochem)))
 
 for (i in seq_along(inlet_biochem)) {
-  mean &lt;- mean(inlet_biochem[i])
+  mean &lt;- mean(inlet_biochem[[i]])
   print(mean)
 }</code></pre>
-<pre><code>## Warning in mean.default(inlet_biochem[i]): argument is not numeric or logical:
-## returning NA</code></pre>
-<pre><code>## [1] NA</code></pre>
-<pre><code>## Warning in mean.default(inlet_biochem[i]): argument is not numeric or logical:
-## returning NA</code></pre>
-<pre><code>## [1] NA</code></pre>
-<pre><code>## Warning in mean.default(inlet_biochem[i]): argument is not numeric or logical:
-## returning NA</code></pre>
-<pre><code>## [1] NA</code></pre>
+<pre><code>## [1] NA
+## [1] 409.9615
+## [1] 13.36538</code></pre>
 <pre class="r"><code>class(toolik_biochem$p_h)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>Find the mean value of each column in inlet_biochem 3 different
