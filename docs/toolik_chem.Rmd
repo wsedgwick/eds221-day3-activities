@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+author: "Wade Sedgwick"
+date: '2022-08-10'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(janitor)
+library(here)
+
+```
+
+```{r}
+
+toolik_biochem <- read_csv(here("data", "2011_Kling_Akchem.csv"), na = c("NaN", "."))
+
+toolik_biochem <- janitor::clean_names(toolik_biochem)
+
+inlet_biochem <- toolik_biochem %>%
+  filter(site == "Toolik Inlet") %>%
+  select(p_h, doc_u_m, tdn_u_m)
+
+inlet_biochem %>%
+ mutate(across(.cols = everything(), mean, na.rm = TRUE))
+
+mean_pH <- mean(inlet_biochem$p_h)
+mean_doc <- mean(inlet_biochem$doc_u_m)
+mean_tdn <- mean(inlet_biochem$tdn_u_m)
+
+apply(inlet_biochem, 2, mean, na.rm = TRUE)
+
+my_vector <- vector(mode = "numeric", length = length(ncol(inlet_biochem)))
+
+for (i in seq_along(inlet_biochem)) {
+  mean <- mean(inlet_biochem[i])
+  print(mean)
+}
+
+
+
+class(toolik_biochem$p_h)
+
+
+```
+
+Find the mean value of each column in inlet_biochem 3 different ways:
+
+
+
